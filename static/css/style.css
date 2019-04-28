@@ -6,16 +6,22 @@ fieldset, img { border: 0; }
 input { border: 1px solid #b0b0b0; padding: 3px 5px 4px; color: #979797; width: 190px;}
 address, caption, cite, code, dfn, th, var { font-style: normal; font-weight: normal; }
 ol, ul { list-style: none; }
+.detail ul,.detail ol{padding-left: 20px;}
 caption, th { text-align: left; }
 h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
 q:before, q:after { content: ''; }
 abbr, acronym { border: 0; }
 .t-left { text-align: left !important; }
 .t-right { text-align: right; }
+a{color:#fff;text-decoration: none;}
+body{
+    height: 100vh;
+    overflow: hidden;
+}
 /* General Demo Style */
 .cb-slideshow,
 .cb-slideshow:after {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     top: 0px;
@@ -117,9 +123,13 @@ abbr, acronym { border: 0; }
     line-height: 100%;
 }
 .page-wrap{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
     background:url(../images/SG_MAIN-PAGE_Image-01.jpg) no-repeat center;
     background-size: cover;
-    height:100vh;    
 }
 .page-hd{
     font-size: 80px;
@@ -140,24 +150,23 @@ abbr, acronym { border: 0; }
 .page-hd h2{
     float: left;
 }
-.page-hd .page-handle{
-    float: right;
-    display: table-cell;
-    vertical-align: middle
+.page-hd .page-detail-hd{
+    float: left;
 }
-.page-hd .icon{    
-    display: inline-block;
-    width:58px;
-    height:58px;    
+.page-detail-hd h3{
+    font-size: 36px;
+    line-height: 180%;
 }
-.page-hd .close-icon{
-    background:url(../images/close.png) no-repeat center center;
+.page-detail-hd p{
+    font-size: 20px;
 }
 .page-bd{
     width: 90%;
     max-width: 1500px;
     margin:0 auto;
     border-top:1px solid #fff;
+    z-index: 1;
+    position: relative;
 }
 
 .scroll-wrap{
@@ -165,13 +174,13 @@ abbr, acronym { border: 0; }
     flex-direction: column;
     background:rgba(0,0,0,.4);
     color:#fff;
-    padding:30px 20px 30px 60px;
-    height:calc(100vh - 162px - 160px)
+    height:calc(100vh - 162px - 100px);
 }
 .scroll-wrap-bd{
+    font-size: 14px;
     overflow-y: auto;
-    padding-right: 40px;
-
+    padding-right: 20px;
+    margin-right: 15px;
     /* ie滚动条 */
     scrollbar-arrow-color:#333; /**//*三角箭头的颜色*/ 
     scrollbar-face-color: #333; /**//*立体滚动条的颜色*/ 
@@ -181,7 +190,12 @@ abbr, acronym { border: 0; }
     scrollbar-darkshadow-color: #333; /**//*立体滚动条强阴影的颜色*/ 
     scrollbar-track-color: #666; /**//*立体滚动条背景颜色*/ 
     scrollbar-base-color:#f8f8f8; /**//*滚动条的基本颜色*/ 
+    
 }
+.scroll-wrap-bd img{
+    max-width: 100%;
+}
+
 ::-webkit-scrollbar
 {
     width: 4px;
@@ -219,7 +233,7 @@ abbr, acronym { border: 0; }
 }
 
 .foot {
-    position: fixed;
+    position: absolute;
     bottom: 30px;
     width: 100%;
     -webkit-animation: titleAnimationMenu 3s linear 0s forwards;
@@ -258,7 +272,159 @@ abbr, acronym { border: 0; }
     text-transform: uppercase;
 }
 
+ul.col3 li{
+    width:31%;
+    margin-bottom:3%;
+    transition: all 1s;
+    display: inline-block;
+}
 
+ul.col3 li .img{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    transition:all .3s;
+}
+ul.col3 li:hover .img{
+    box-shadow: 0 0 20px 5px rgba(0,0,0,.7) 
+}
+ul.col3 li .img::after{
+    content: '';
+    display: block;
+    overflow: hidden;
+    padding-top:68%;
+}
+ul.col3 li img{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ul.col3 li span{
+    font-size: 12px;
+}
+ul.col3 li:nth-child(3n-1){
+    margin:0 3.5%;
+}
+
+
+
+ul.col4 li{
+    width:23.5%;
+    margin-bottom:2%;
+    transition: all 1s;
+    display: inline-block;
+    margin-right:2%;
+}
+
+ul.col4 li:nth-child(4n){
+    margin-right:0;
+}
+ul.col4 li .img{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    transition:all .3s;
+}
+ul.col4 li:hover .img{
+    text-align: center;
+    box-shadow: 0 0 20px 5px rgba(0,0,0,.7) 
+}
+ul.col4 li .img::after{
+    content: '';
+    display: block;
+    overflow: hidden;
+    padding-top:56%;
+}
+ul.col4 li img{
+    position: absolute;
+    max-width: 100%;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ul.col4 li span{
+    font-size: 12px;
+}
+
+
+
+ul.col2 li{
+    float:left;
+    width:48%;
+    margin-bottom:3%;
+}
+ul.col2 li:hover{
+    cursor: pointer;
+}
+ul.col2 li .img{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    transition:all .3s;
+}
+ul.col2 li:hover .img{
+    box-shadow: 0 0 20px 5px rgba(0,0,0,.7) 
+}
+ul.col2 li .img::after{
+    content: '';
+    display: block;
+    overflow: hidden;
+    padding-top:68%;
+}
+ul.col2 li img{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+}
+ul.col2 li span{
+    font-size: 12px;
+}
+ul.col2 li:nth-child(2n){
+    margin-left:4%;
+}
+
+
+
+/*slide  */
+
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%,0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+
+
+/* mobile css */
+@media screen and (max-width: 768px){
+    .page-hd{
+        font-size: 40px;
+        padding: 20px 0 20px 0;
+    }
+	
+}
 /* Animation for the title */
 
 @-webkit-keyframes titleAnimation {
@@ -454,10 +620,41 @@ abbr, acronym { border: 0; }
 }
 
 @media screen and (max-width:750px) {
-    .foot-logo {
-       display: none;
+    .scroll-wrap{
+        height: calc(100vh - 85px - 80px);
+    }
+    .foot{
+        bottom:10px;
+    }
+    .foot-logo{
+        width: 100%;
+    }
+    .foot-logo img{
+        margin-top:0;
     }
     .nav-bottom {
         width: 100%;
+    }
+    ul.col3 li,ul.col4 li{
+        width:100%;
+        margin-bottom:10px;
+    }
+    ul.col3 li:nth-child(3n-1),ul.col4 li{
+        margin:0;
+        margin-bottom:10px;
+    }
+    .page-hd .page-detail-hd{
+        float: none;
+    }
+    .page-detail-hd h3{
+        font-size: 20px;
+    }
+    .page-detail-hd p{
+        font-size: 14px;
+    }
+    .nofloat .page-handle{
+        margin-top:10px;
+        display: block !important;
+        float:none !important;
     }
 }
